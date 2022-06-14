@@ -1,0 +1,13 @@
+.games-app {
+    padding: 0;
+    height: 100%;
+    left: 0;
+    margin-left: 250px;
+    padding-left: 25px;
+    padding-top: 25px;
+    width: 1653px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    /* background-color: rgb(255, 227, 227); */
+}

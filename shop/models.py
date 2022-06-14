@@ -9,10 +9,11 @@ class Product(Base):
     __tablename__ = "product"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), nullable=False)
+    name = Column(String(100), nullable=False)
     price = Column(Numeric(5, 2), nullable=False)
     available = Column(Numeric(2, 0))
-    description = Column(String(500))
+    description = Column(String(1000))
+    preview = Column(String(50000))
     score = Column(Numeric(2, 1))
 
 
@@ -20,8 +21,8 @@ class Image(Base):
     __tablename__ = "image"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(50))
-    image = Column(String(50000))
+    name = Column(String(100))
+    image_base64 = Column(String(50000))
     product_id = Column(Integer, ForeignKey("product.id"))
 
 

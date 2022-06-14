@@ -1,0 +1,48 @@
+.navbar-app {
+    width: 1653px;
+    height: 178px;
+    left: 0;
+    background-color:brown;
+    border-bottom: 3px solid rgb(17,17,17);
+    border-top: 3px solid rgb(17,17,17);
+    border-right: 3px solid rgb(17,17,17);
+    display: flex;
+    align-items: center;
+    margin-left: 250px;
+}
+
+.icon-container {
+    padding-left: 15px;
+    margin-right: 180px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.name-filter-container {
+    margin-right: 75px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 400px;
+}
+
+.price-filter-container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 550px;
+}
+
+.price-search-button {
+    margin-bottom: 4px;
+}
+
+.name-search-button {
+    margin-bottom: 4px;
+}
+
+.shop-icon-text {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 15px;
+    width: 280px;
+}

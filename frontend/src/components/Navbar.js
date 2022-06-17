@@ -37,12 +37,15 @@ function Navbar(props) {
             <label className='shop-icon-text'>Uśmiechnięte planszówki</label>
         </div>
         <div className='name-filter-container'>
-            <input className='name-search' type="text" placeholder='Nazwa gry...' value={inputName} onInput={e => setInputName(e.target.value)}></input>
+            <label className='name-search'>Nazwa gry:</label> <br/>
+            <input type="text" placeholder='' value={inputName} onInput={e => setInputName(e.target.value)}></input>
             <Button className='name-search-button' variant="warning" onClick={() => inputSetName(inputName)}>Szukaj</Button>{' '}
         </div>
         <div className='price-filter-container'>
-            <input className='price-min' type="number" placeholder='Cena minimalna...' value={inputPriceMin} onInput={e => setInputPriceMin(e.target.value)}></input>
-            <input className='price-max' type="number" placeholder='Cena maksymalna...' value={inputPriceMax} onInput={e => setInputPriceMax(e.target.value)}></input>
+            <label className='price-min'>Cena minimalna:</label>
+            <label className='price-max'>Cena maksymalna:</label> <br/>
+            <input type="number" placeholder='' value={inputPriceMin} onInput={e => setInputPriceMin(e.target.value)}></input>
+            <input type="number" placeholder='' value={inputPriceMax} onInput={e => setInputPriceMax(e.target.value)}></input>
             <Button className='price-search-button' variant="warning" onClick={() => inputSetPrice(inputPriceMin, inputPriceMax)}>Szukaj</Button>{' '}
         </div>
     </div>

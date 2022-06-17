@@ -11,3 +11,69 @@
     gap: 25px;
     /* background-color: rgb(255, 227, 227); */
 }
+
+.cart-app {
+    padding: 0;
+    height: 100%;
+    left: 0;
+    margin-left: 250px;
+    padding-right: 10px;
+    padding-left: 25px;
+    padding-top: 20px;
+    width: 1653px;
+}
+
+.table-position {
+    text-align: center;
+    font-weight: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+}
+
+.forms-flex {
+    display: flex;
+    gap: 10px;
+    height: 50px;
+}
+
+.sum-text {
+    font-size: 25px;
+    margin-top: 4px;
+}
+
+.sum-flex {
+    display: flex;
+    gap: 10px;
+}
+
+.col-name {
+    text-align: right;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.col-input {
+    text-align: left;
+}
+
+.container-positon {
+    width: 500px;
+    padding-bottom: 8px;
+}
+
+.form-position {
+    padding-right: 1150px;
+}
+
+.button-position {
+    margin-left: 150px;
+}
+
+.pay-data-position {
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin-left: 140px;
+    margin-top: 40px;
+    margin-bottom: 5px;
+}

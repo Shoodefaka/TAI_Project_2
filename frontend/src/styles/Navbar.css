@@ -1,5 +1,5 @@
 .navbar-app {
-    width: 1653px;
+    width: 1670px;
     height: 178px;
     left: 0;
     background-color:brown;
@@ -13,14 +13,14 @@
 
 .icon-container {
     padding-left: 15px;
-    margin-right: 180px;
+    margin-right: 175px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .name-filter-container {
-    margin-right: 75px;
+    margin-right: 70px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 400px;
 }
@@ -32,10 +32,12 @@
 
 .price-search-button {
     margin-bottom: 4px;
+    margin-left: 5px;
 }
 
 .name-search-button {
     margin-bottom: 4px;
+    margin-left: 5px;
 }
 
 .shop-icon-text {
@@ -45,4 +47,23 @@
     font-size: 40px;
     margin-left: 15px;
     width: 280px;
+}
+
+.name-search {
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.price-min {
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    margin-right: 45px;
+}
+
+.price-max {
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
 }

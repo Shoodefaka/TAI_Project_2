@@ -1,4 +1,3 @@
-from unicodedata import category, numeric
 from pydantic import BaseModel
 from typing import Optional
 
@@ -21,3 +20,11 @@ class Category(BaseModel):
 class ProductCategory(BaseModel):
     product_id: int
     category_id: int
+
+# class UserPayInfo(BaseModel):
+#     # firstname: str
+#     # lastname: str
+#     # email: str
+#     # phone: str
+#     # total_cost: str
+#     # products: list

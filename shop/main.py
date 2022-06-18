@@ -5,17 +5,19 @@ from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import requests
-from starlette.responses import RedirectResponse
+# from starlette.responses import RedirectResponse
+from fastapi.responses import RedirectResponse
 
 app = FastAPI()
 
 origins = {
     "http://localhost:3000",
+    "https://secure.payu.com"
 }
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins= ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -62,9 +64,8 @@ async def getImagesById(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="HTTP404 - Category not found get_all_product")
     return all_images
 
-@app.post('/payment')
+@app.post('/payment', response_class=RedirectResponse)
 async def postPayment():
-# userPayInfo: schemas.UserPayInfo
     params = {
         "grant_type": "client_credentials",
         "client_id": "145227",
@@ -80,20 +81,20 @@ async def postPayment():
         "notifyUrl": "https://localhost:8000/",
         "customerIp": "127.0.0.1",
         "merchantPosId": "145227",
-        "description": "Usmiechniete planszowki",
+        "description": "Test",
         "currencyCode": "PLN",
         "totalAmount": "100",
         "buyer": {
-            "firstName": "Mateusz",
-            "lastname": "Lebkowski",
-            "phone": "733227871",
-            "email": "mlebkowski@o2.pl",
+            "firstName": "John",
+            "lastname": "Doe",
+            "phone": "123123123",
+            "email": "test@o2.pl",
             "language": "pl"
         },
         "products": [
             {
                 "name": "Wireless Mouse for Laptop",
-                "unitPrice": "15000",
+                "unitPrice": "100",
                 "quantity": "1"
             }
         ]
@@ -101,8 +102,7 @@ async def postPayment():
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer 024f6297-7beb-4712-99b0-b088d73e5383",
-        "Access-Control-Allow-Origin": "*"
+        "Authorization": "Bearer 2cdd0b3c-47fa-42f1-9466-61de130f0004",
     }
 
     url="https://secure.payu.com/api/v2_1/orders"
@@ -113,4 +113,6 @@ async def postPayment():
 
     temp = requests.get(url_pay_success)
 
-    return RedirectResponse(url_pay_success, headers={"Access-Control-Allow-Origin": "*"})
+    # print(req.json())
+
+    return RedirectResponse(url_pay_success)

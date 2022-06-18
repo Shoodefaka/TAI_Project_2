@@ -37,7 +37,7 @@ function Games(props) {
 
   const handlePayClick = () => {
     axios
-      .post('http://localhost:8000/payment', {
+      .post('/payment'
         // firstname: "Mateusz",
         // lastname: "Lebkowski",
         // email: "mlebkowski@o2.pl",
@@ -48,8 +48,9 @@ function Games(props) {
         //   unitPrice: "100",
         //   quantity: "1"
         // }]
-      })
+      )
       .then(function (response) {
+        response.headers("Access-Control-Allow-Origin", "*");
         console.log(response);
       })
       .catch(function (error) {

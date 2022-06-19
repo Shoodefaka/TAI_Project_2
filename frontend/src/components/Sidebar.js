@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
- //import {Row, Col} from 'react-bootstrap'
 import "../styles/Sidebar.css"
 import {SidebarData} from './SidebarData'
 import axios from 'axios';

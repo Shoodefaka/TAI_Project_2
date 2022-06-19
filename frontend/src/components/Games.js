@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import "../styles/Games.css";
 import axios from 'axios';
 import CardGames from './CardGames';
-import { propTypes } from 'react-bootstrap/esm/Image';
 
 function Games(props) {
 
@@ -11,24 +10,13 @@ function Games(props) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  // useEffect( () => {
-  //   axios
-  //     .get('http://localhost:8000/category/all')
-  //     .then(res => {
-  //       console.log(res)
-  //       props.setProducts(res.data)
-  //     })
-  //     .catch (err => {
-  //       console.log(err)
-  //     })
-  // }, []);
-
   const removeFromCart = (productToRemove) => {
     props.setCart(props.cart.filter((prod) => prod !== productToRemove));
   };
 
   const getTotalSum = () => {
-    return props.cart.reduce((sum, {price}) => sum + price, 0);
+    var temp = props.cart.reduce((sum, {price}) => sum + price, 0);
+    return temp
   }
 
   const clearCart = () => {
@@ -37,21 +25,17 @@ function Games(props) {
 
   const handlePayClick = () => {
     axios
-      .post('/payment'
-        // firstname: "Mateusz",
-        // lastname: "Lebkowski",
-        // email: "mlebkowski@o2.pl",
-        // phone: "123123123",
-        // total_cost: "100",
-        // product: [{
-        //   name: "ciastko",
-        //   unitPrice: "100",
-        //   quantity: "1"
-        // }]
+      .post('http://localhost:8000/payment', {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        phone: phone,
+        total_cost: (getTotalSum()*100)
+      }
       )
       .then(function (response) {
-        response.headers("Access-Control-Allow-Origin", "*");
         console.log(response);
+        window.open(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -80,7 +64,7 @@ function Games(props) {
             <tbody>
               {props.cart.map(cartProduct =>
                 <tr>
-                  <th className='table-position align-middle'><img height={100} src={cartProduct.preview}/></th>
+                  <th className='table-position align-middle'><img height={100} src={cartProduct.preview} alt="cart"/></th>
                   <th className='table-position align-middle'>{cartProduct.name}</th>
                   <th className='table-position align-middle'>{cartProduct.price} zł</th>
                   <th className='table-position align-middle'><button type='button' className='btn btn-secondary btn-lg' onClick={() => removeFromCart(cartProduct)}>Usuń</button></th>

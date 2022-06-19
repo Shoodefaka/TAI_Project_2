@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Depends, Response, status, HTTPException
+from email import header
+from fastapi import FastAPI, Depends, status, HTTPException, Request
 from . import schemas, models, crud
 from .database import SessionLocal, engine
 from sqlalchemy.orm import Session
@@ -12,7 +13,9 @@ app = FastAPI()
 
 origins = {
     "http://localhost:3000",
-    "https://secure.payu.com"
+    "https://localhost:3000",
+    "https://secure.payu.com",
+    "http://secure.payu.com"
 }
 
 app.add_middleware(
@@ -32,6 +35,13 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# @app.middleware("http")
+# async def add_headers(request: Request, call_next):
+#     response = await call_next(request)
+#     response.headers["Access-Control-Allow-Origin"] = '*'
+#     return response
+
 
 @app.get('/category/{category}')
 async def getByCategory(category: Optional[str] = None, name: Optional[str] = None, priceMin: Optional[float] = None, priceMax: Optional[float] = None, db: Session = Depends(get_db)):
@@ -64,8 +74,8 @@ async def getImagesById(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="HTTP404 - Category not found get_all_product")
     return all_images
 
-@app.post('/payment', response_class=RedirectResponse)
-async def postPayment():
+@app.post('/payment')
+async def postPayment(user_pay_info:schemas.UserPayInfo):
     params = {
         "grant_type": "client_credentials",
         "client_id": "145227",
@@ -78,22 +88,23 @@ async def postPayment():
     access_token = resp.json()["access_token"]
 
     pay = {
-        "notifyUrl": "https://localhost:8000/",
+        "notifyUrl": "http://localhost:3000/",
         "customerIp": "127.0.0.1",
         "merchantPosId": "145227",
-        "description": "Test",
+        "description": "Uśmiechnięte planszówki",
         "currencyCode": "PLN",
-        "totalAmount": "100",
+        "totalAmount": user_pay_info.total_cost,
+        # "continueUrl": "https://localhost:3000/test",
         "buyer": {
-            "firstName": "John",
-            "lastname": "Doe",
-            "phone": "123123123",
-            "email": "test@o2.pl",
+            "firstName": user_pay_info.firstname,
+            "lastname": user_pay_info.lastname,
+            "phone": user_pay_info.phone,
+            "email": user_pay_info.email,
             "language": "pl"
         },
         "products": [
             {
-                "name": "Wireless Mouse for Laptop",
+                "name": "Placeholder",
                 "unitPrice": "100",
                 "quantity": "1"
             }
@@ -102,17 +113,19 @@ async def postPayment():
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer 2cdd0b3c-47fa-42f1-9466-61de130f0004",
+        "Authorization": "Bearer ae18868b-1f15-49f7-b9aa-265bd12a5f17",
     }
 
     url="https://secure.payu.com/api/v2_1/orders"
 
     req = requests.post(url, json=pay, headers=headers, allow_redirects=False)
+    
+    print(req.json())
 
     url_pay_success = req.json()["redirectUri"]
 
     temp = requests.get(url_pay_success)
 
-    # print(req.json())
+    # 
 
-    return RedirectResponse(url_pay_success)
+    return url_pay_success

@@ -21,10 +21,10 @@ class ProductCategory(BaseModel):
     product_id: int
     category_id: int
 
-# class UserPayInfo(BaseModel):
-#     # firstname: str
-#     # lastname: str
-#     # email: str
-#     # phone: str
-#     # total_cost: str
-#     # products: list
+class UserPayInfo(BaseModel):
+    firstname: str
+    lastname: str
+    email: str
+    phone: str
+    total_cost: str
+    # products: list

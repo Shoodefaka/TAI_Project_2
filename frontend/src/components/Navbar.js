@@ -9,9 +9,9 @@ function Navbar(props) {
   const [inputPriceMin, setInputPriceMin] = useState("0")
   const [inputPriceMax, setInputPriceMax] = useState("700")
 
-  const inputSetName = (name) => {
-    props.setName(name);
-  }
+  // const inputSetName = (name) => {
+  //   props.setName(name);
+  // }
 
   const inputSetPrice = (priceMin, priceMax) => {
     props.setPriceMin(priceMin);
@@ -39,7 +39,7 @@ function Navbar(props) {
         <div className='name-filter-container'>
             <label className='name-search'>Nazwa gry:</label> <br/>
             <input type="text" placeholder='' value={inputName} onInput={e => setInputName(e.target.value)}></input>
-            <Button className='name-search-button' variant="warning" onClick={() => inputSetName(inputName)}>Szukaj</Button>{' '}
+            <Button className='name-search-button' variant="warning" onClick={() => {props.setName(inputName); setInputName("")}}>Szukaj</Button>{' '}
         </div>
         <div className='price-filter-container'>
             <label className='price-min'>Cena minimalna:</label>

@@ -16,7 +16,7 @@ function Games(props) {
 
   const getTotalSum = () => {
     var temp = props.cart.reduce((sum, {price}) => sum + price, 0);
-    return temp
+    return parseFloat(temp).toFixed(2);
   }
 
   const clearCart = () => {
@@ -40,6 +40,12 @@ function Games(props) {
       .catch(function (error) {
         console.log(error);
       });
+
+      clearCart();
+      setFirstname("");
+      setLastname("");
+      setEmail("");
+      setPhone("");
   }
 
   return (
@@ -99,16 +105,16 @@ function Games(props) {
               <div className='col-lg-3  col-name'>
                   Email:
                 </div>
-                <div className='col col-input' value={email} onInput={e => setEmail(e.target.value)}>
-                  <input type='email'/>  
+                <div className='col col-input'>
+                  <input type='email' value={email} onInput={e => setEmail(e.target.value)}/>  
                 </div>
               </div>
               <div className='row'>
               <div className='col-lg-3  col-name'>
                   Telefon:
                 </div>
-                <div className='col col-input' value={phone} onInput={e => setPhone(e.target.value)}>
-                  <input type='number'/>
+                <div className='col col-input'>
+                  <input type='number' value={phone} onInput={e => setPhone(e.target.value)}/>
                 </div>
               </div>
             </div>
@@ -122,4 +128,3 @@ function Games(props) {
 }
 
 export default Games;
-// onClick={removeFromCart(cartProduct)}

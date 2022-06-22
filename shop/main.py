@@ -113,7 +113,7 @@ async def postPayment(user_pay_info:schemas.UserPayInfo):
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer ae18868b-1f15-49f7-b9aa-265bd12a5f17",
+        "Authorization": "Bearer " + access_token,
     }
 
     url="https://secure.payu.com/api/v2_1/orders"

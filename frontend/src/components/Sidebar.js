@@ -19,7 +19,7 @@ function Sidebar(props) {
   }, [props.category])
 
   const makeCartList = () => {
-    props.setCartList(...props.cartList, 
+    props.setCartList([...props.cartList, 
       props.cart.map(product => {
         return {
           unitPrice: product.price*100,
@@ -27,7 +27,7 @@ function Sidebar(props) {
           quantity: "1"
         }
       })
-    )
+    ])
   }
 
   return (

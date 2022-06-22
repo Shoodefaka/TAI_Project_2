@@ -27,7 +27,7 @@ function CardGamesModal(props) {
           <Modal.Title>{props.product.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <Carousel>
+            <Carousel variant='dark'>
                 {images.map(image => { 
                     return <Carousel.Item interval={null} key={image.id}>
                         <img className="d-block w-10 imageCenter" height={400} src={image.image_base64} alt="First slide"/>

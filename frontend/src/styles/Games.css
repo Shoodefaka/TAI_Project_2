@@ -77,3 +77,12 @@
     margin-top: 40px;
     margin-bottom: 5px;
 }
+
+.warning-position {
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 76px;
+    color: rgb(199, 3, 3);
+}

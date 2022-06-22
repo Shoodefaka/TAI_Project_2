@@ -9,6 +9,7 @@ function Games(props) {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [showWarning, setShowWarning] = useState(false);
 
   const removeFromCart = (productToRemove) => {
     props.setCart(props.cart.filter((prod) => prod !== productToRemove));
@@ -24,7 +25,13 @@ function Games(props) {
   }
 
   const handlePayClick = () => {
-    axios
+    if(firstname === "" || lastname === "" || email === "" || phone === "") {
+      setShowWarning(true);
+    }
+    else {
+      setShowWarning(false);
+
+      axios
       .post('http://localhost:8000/payment', {
         firstname: firstname,
         lastname: lastname,
@@ -46,6 +53,7 @@ function Games(props) {
       setLastname("");
       setEmail("");
       setPhone("");
+    }
   }
 
   return (
@@ -120,6 +128,7 @@ function Games(props) {
             </div>
           </div>
           <button type='button' className='btn btn-primary btn-lg button-position' onClick={() => handlePayClick()}>Zapłać z PayU</button>
+          {showWarning && <div className='warning-position'>Proszę uzupełnić puste pola</div>}
         </div>
       </div>
       }

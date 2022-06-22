@@ -1,13 +1,10 @@
-from email import header
-from fastapi import FastAPI, Depends, status, HTTPException, Request
+from fastapi import FastAPI, Depends, status, HTTPException
 from . import schemas, models, crud
 from .database import SessionLocal, engine
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import requests
-# from starlette.responses import RedirectResponse
-from fastapi.responses import RedirectResponse
 
 app = FastAPI()
 
@@ -35,12 +32,6 @@ def get_db():
         yield db
     finally:
         db.close()
-
-# @app.middleware("http")
-# async def add_headers(request: Request, call_next):
-#     response = await call_next(request)
-#     response.headers["Access-Control-Allow-Origin"] = '*'
-#     return response
 
 
 @app.get('/category/{category}')
@@ -94,7 +85,6 @@ async def postPayment(user_pay_info:schemas.UserPayInfo):
         "description": "Uśmiechnięte planszówki",
         "currencyCode": "PLN",
         "totalAmount": user_pay_info.total_cost,
-        # "continueUrl": "https://localhost:3000/test",
         "buyer": {
             "firstName": user_pay_info.firstname,
             "lastname": user_pay_info.lastname,
@@ -120,12 +110,10 @@ async def postPayment(user_pay_info:schemas.UserPayInfo):
 
     req = requests.post(url, json=pay, headers=headers, allow_redirects=False)
     
-    print(req.json())
+    # print(req.json())
 
     url_pay_success = req.json()["redirectUri"]
 
     temp = requests.get(url_pay_success)
-
-    # 
 
     return url_pay_success

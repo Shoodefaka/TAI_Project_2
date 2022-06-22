@@ -1,8 +1,6 @@
-from re import search
 from sqlalchemy.orm import Session
-from sqlalchemy import select
 
-from . import schemas, models
+from . import models
 
 def get_products_by_category(db: Session, input_category: str, input_name: str, input_priceMin: float, input_priceMax: float):
     if input_category == "all":

@@ -34,47 +34,47 @@ function Sidebar(props) {
     <div className='container-sidebar'>
       <div className='sidebar'>
         <div className='sidebar-element sidebar-first'  id={window.location.pathname === "/" ? "active": ""} 
-        onClick={ () => {props.setCategory("all"); props.setShowCart(false)}}>
+        onClick={ () => {props.setCategory("all"); props.setShowCart(false); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[0].icon}</i>
           {SidebarData[0].title}
         </div>
         <div className='sidebar-element' id={window.location.pathname === "/category/rodzinne" ? "active": ""}
-        onClick={ () => {props.setCategory("rodzinne"); props.setShowCart(false)}}>
+        onClick={ () => {props.setCategory("rodzinne"); props.setShowCart(false); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[1].icon}</i>
           {SidebarData[1].title}
         </div>
         <div className='sidebar-element' id={window.location.pathname === "/category/imprezowe" ? "active": ""}
-        onClick={ () => {props.setCategory("imprezowe"); props.setShowCart(false)}}>
+        onClick={ () => {props.setCategory("imprezowe"); props.setShowCart(false); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[2].icon}</i>
           {SidebarData[2].title}
         </div>
         <div className='sidebar-element' id={window.location.pathname === "/category/strategiczne" ? "active": ""}
-        onClick={ () => {props.setCategory("strategiczne"); props.setShowCart(false)}}>
+        onClick={ () => {props.setCategory("strategiczne"); props.setShowCart(false); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[3].icon}</i>
           {SidebarData[3].title}
         </div>
         <div className='sidebar-element' id={window.location.pathname === "/category/fantasy" ? "active": ""}
-        onClick={ () => {props.setCategory("fantasy"); props.setShowCart(false)}}>
+        onClick={ () => {props.setCategory("fantasy"); props.setShowCart(false); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[4].icon}</i>
           {SidebarData[4].title}
         </div>
         <div className='sidebar-element' id={window.location.pathname === "/category/przygodowe" ? "active": ""}
-        onClick={ () => {props.setCategory("przygodowe"); props.setShowCart(false)}}>
+        onClick={ () => {props.setCategory("przygodowe"); props.setShowCart(false); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[5].icon}</i>
           {SidebarData[5].title}
         </div>
         <div className='sidebar-element' id={window.location.pathname === "/category/dodatki-do-gier" ? "active": ""}
-        onClick={ () => {props.setCategory("dodatki-do-gier"); props.setShowCart(false)}}>
+        onClick={ () => {props.setCategory("dodatki-do-gier"); props.setShowCart(false); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[6].icon}</i>
           {SidebarData[6].title}
         </div>
         <div className='sidebar-element' id={window.location.pathname === "/category/karciane" ? "active": ""}
-        onClick={ () => {props.setCategory("karciane"); props.setShowCart(false)}}>
+        onClick={ () => {props.setCategory("karciane"); props.setShowCart(false); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[7].icon}</i>
           {SidebarData[7].title}
         </div>
         <div className='sidebar-element sidebar-last' id={window.location.pathname === "/cart" ? "active": ""}
-        onClick={ () => {props.setShowCart(true); makeCartList()}}>
+        onClick={ () => {props.setShowCart(true); makeCartList(); props.setName(""); props.setInputName(""); props.setPriceMin(0); props.setInputPriceMin(0); props.setPriceMax(700); props.setInputPriceMax(700)}}>
           <i className='sidebar-icon'>{SidebarData[8].icon}</i>
           {SidebarData[8].title} ({props.cart.length})
         </div>

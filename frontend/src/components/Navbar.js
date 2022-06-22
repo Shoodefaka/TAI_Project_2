@@ -5,13 +5,6 @@ import axios from 'axios';
 
 function Navbar(props) {
 
-  const [inputName, setInputName] = useState("")
-  const [inputPriceMin, setInputPriceMin] = useState("0")
-  const [inputPriceMax, setInputPriceMax] = useState("700")
-
-  // const inputSetName = (name) => {
-  //   props.setName(name);
-  // }
 
   const inputSetPrice = (priceMin, priceMax) => {
     props.setPriceMin(priceMin);
@@ -38,15 +31,15 @@ function Navbar(props) {
         </div>
         <div className='name-filter-container'>
             <label className='name-search'>Nazwa gry:</label> <br/>
-            <input type="text" placeholder='' value={inputName} onInput={e => setInputName(e.target.value)}></input>
-            <Button className='name-search-button' variant="warning" onClick={() => {props.setName(inputName); setInputName("")}}>Szukaj</Button>{' '}
+            <input type="text" placeholder='' value={props.inputName} onInput={e => props.setInputName(e.target.value)}></input>
+            <Button className='name-search-button' variant="warning" onClick={() => {props.setName(props.inputName)}}>Szukaj</Button>{' '}
         </div>
         <div className='price-filter-container'>
             <label className='price-min'>Cena minimalna:</label>
             <label className='price-max'>Cena maksymalna:</label> <br/>
-            <input type="number" placeholder='' value={inputPriceMin} onInput={e => setInputPriceMin(e.target.value)}></input>
-            <input type="number" placeholder='' value={inputPriceMax} onInput={e => setInputPriceMax(e.target.value)}></input>
-            <Button className='price-search-button' variant="warning" onClick={() => inputSetPrice(inputPriceMin, inputPriceMax)}>Szukaj</Button>{' '}
+            <input type="number" placeholder='' value={props.inputPriceMin} onInput={e => props.setInputPriceMin(e.target.value)}></input>
+            <input type="number" placeholder='' value={props.inputPriceMax} onInput={e => props.setInputPriceMax(e.target.value)}></input>
+            <Button className='price-search-button' variant="warning" onClick={() => inputSetPrice(props.inputPriceMin, props.inputPriceMax)}>Szukaj</Button>{' '}
         </div>
     </div>
   )
